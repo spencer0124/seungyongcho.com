@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<Layout title={project.data.title} description={project.data.description}>
+  <Container>
+    <div class="animate mt-10 space-y-4">
+      <a href="/" class="text-sm opacity-50 hover:opacity-100 transition-opacity">← Back</a>
+      <h1 class="text-3xl font-bold text-black dark:text-white">
+        {project.data.title}
+      </h1>
+      <article class="prose">
+        <Content />
+      </article>
+    </div>
+  </Container>
+</Layout>
