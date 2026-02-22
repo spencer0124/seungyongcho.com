@@ -4,7 +4,6 @@ export const SITE: Site = {
   NAME: "Seungyong Cho",
   EMAIL: "Zoyoong124@gmail.com",
   NUM_POSTS_ON_HOMEPAGE: 3,
-  NUM_WORKS_ON_HOMEPAGE: 2,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
 };
 
@@ -16,11 +15,6 @@ export const HOME: Metadata = {
 export const BLOG: Metadata = {
   TITLE: "Blog",
   DESCRIPTION: "Thoughts on development, technology, and life.",
-};
-
-export const WORK: Metadata = {
-  TITLE: "Work",
-  DESCRIPTION: "My professional career and experience.",
 };
 
 export const PROJECTS: Metadata = {
