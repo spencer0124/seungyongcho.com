@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
+import Giscus from "@components/Giscus.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -32,6 +33,7 @@ const { Content } = await post.render();
       <article class="prose">
         <Content />
       </article>
+      <Giscus />
     </div>
   </Container>
 </Layout>

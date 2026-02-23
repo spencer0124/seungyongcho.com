@@ -1,0 +1,63 @@
+
+<div id="giscus-container" class="mt-12">
+  <script
+    src="https://giscus.app/client.js"
+    data-repo="spencer0124/seungyongcho.com"
+    data-repo-id="R_kgDOQ0nTgA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQ0nTgM4C3CUG"
+    data-mapping="pathname"
+    data-strict="1"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="https://giscus.catppuccin.com/themes/latte.css"
+    data-lang="ko"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async
+  ></script>
+</div>
+
+<script>
+  function syncGiscusTheme() {
+    const isDark = document.documentElement.classList.contains("dark");
+    const theme = isDark
+      ? "https://giscus.catppuccin.com/themes/mocha.css"
+      : "https://giscus.catppuccin.com/themes/latte.css";
+
+    const iframe = document.querySelector<HTMLIFrameElement>(
+      "iframe.giscus-frame"
+    );
+    if (iframe) {
+      iframe.contentWindow?.postMessage(
+        { giscus: { setConfig: { theme } } },
+        "https://giscus.app"
+      );
+    }
+  }
+
+  function initGiscusThemeSync() {
+    syncGiscusTheme();
+
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.attributeName === "class") {
+          syncGiscusTheme();
+        }
+      }
+    });
+
+    observer.observe(document.documentElement, { attributes: true });
+  }
+
+  // Sync theme once giscus iframe loads
+  window.addEventListener("message", (event) => {
+    if (event.origin !== "https://giscus.app") return;
+    if (typeof event.data !== "object" || !event.data.giscus) return;
+    syncGiscusTheme();
+  });
+
+  document.addEventListener("DOMContentLoaded", initGiscusThemeSync);
+  document.addEventListener("astro:after-swap", initGiscusThemeSync);
+</script>

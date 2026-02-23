@@ -168,6 +168,18 @@ function toggleTheme(dark) {
 
   window.getComputedStyle(css).opacity;
     document.head.removeChild(css);
+
+    // Sync Giscus theme
+    const giscusTheme = dark
+      ? "https://giscus.catppuccin.com/themes/mocha.css"
+      : "https://giscus.catppuccin.com/themes/latte.css";
+    const giscusFrame = document.querySelector("iframe.giscus-frame");
+    if (giscusFrame) {
+      giscusFrame.contentWindow?.postMessage(
+        { giscus: { setConfig: { theme: giscusTheme } } },
+        "https://giscus.app"
+      );
+    }
   }
 
   function preloadTheme() {
