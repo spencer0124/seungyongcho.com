@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
+import LinkCard from "@components/LinkCard.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -13,18 +14,71 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await project.render();
+
+const links = project.data.links ?? [];
+const hasLinks = links.length > 0;
+
+// Group links by category, preserving order
+const categories: { name: string; links: typeof links }[] = [];
+for (const link of links) {
+  const catName = link.category ?? "";
+  const existing = categories.find((c) => c.name === catName);
+  if (existing) {
+    existing.links.push(link);
+  } else {
+    categories.push({ name: catName, links: [link] });
+  }
+}
 ---
 
 <Layout title={project.data.title} description={project.data.description}>
   <Container>
-    <div class="animate mt-10 space-y-4">
-      <a href="/" class="text-sm opacity-50 hover:opacity-100 transition-opacity">← Back</a>
-      <h1 class="text-3xl font-bold text-black dark:text-white">
-        {project.data.title}
-      </h1>
-      <article class="prose">
-        <Content />
-      </article>
-    </div>
+    {hasLinks ? (
+      <div class="mt-10 space-y-8">
+        <div class="animate space-y-3">
+          <a href="/" class="text-sm opacity-50 hover:opacity-100 transition-opacity">
+            ← Back
+          </a>
+          <h1 class="text-3xl font-bold text-black dark:text-white tracking-tight">
+            {project.data.title}
+          </h1>
+          <p class="text-sm text-black/50 dark:text-white/60">
+            {project.data.description}
+          </p>
+        </div>
+
+        {categories.map((cat) => (
+          <div class="animate space-y-2">
+            {cat.name && (
+              <h2 class="text-xs font-medium tracking-widest uppercase text-black/30 dark:text-white/30 pl-1">
+                {cat.name}
+              </h2>
+            )}
+            <div class="space-y-2">
+              {cat.links.map((link) => (
+                <LinkCard
+                  label={link.label}
+                  url={link.url}
+                  description={link.description}
+                  icon={link.icon}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="animate mt-10 space-y-4">
+        <a href="/" class="text-sm opacity-50 hover:opacity-100 transition-opacity">
+          ← Back
+        </a>
+        <h1 class="text-3xl font-bold text-black dark:text-white">
+          {project.data.title}
+        </h1>
+        <article class="prose">
+          <Content />
+        </article>
+      </div>
+    )}
   </Container>
 </Layout>

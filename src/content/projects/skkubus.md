@@ -2,48 +2,47 @@
 title: "SKKUBUS"
 description: "성균관대학교 셔틀버스 정보 통합 앱 (재학생 50% 사용)"
 date: "2023-03-01"
-demoURL: "https://play.google.com/store/apps/details?id=com.skkubus.app"
-repoURL: "https://github.com/skkubus"
+demoURL: "https://play.google.com/store/apps/details?id=com.zoyoong.skkubus"
+repoURL: "https://github.com/spencer0124/SKKUBUS-app"
+links:
+  - label: "App Store"
+    url: "https://apps.apple.com/kr/app/%EC%8A%A4%EA%BE%B8%EB%B2%84%EC%8A%A4-%EC%84%B1%EA%B7%A0%EA%B4%80%EB%8C%80%ED%95%99%EA%B5%90-%EB%B2%84%EC%8A%A4/id6446813434"
+    description: "iOS / iPadOS"
+    icon: "appstore"
+    category: "다운로드"
+  - label: "Google Play"
+    url: "https://play.google.com/store/apps/details?id=com.zoyoong.skkubus"
+    description: "Android"
+    icon: "playstore"
+    category: "다운로드"
+  - label: "GitHub"
+    url: "https://github.com/spencer0124/SKKUBUS-app"
+    description: "spencer0124/SKKUBUS-app"
+    icon: "github"
+    category: "소스 코드"
+  - label: "성대신문 인터뷰"
+    url: "https://webzine.skku.edu/skkuzine/section/people01.do?mode=list&articleNo=109617"
+    description: "SKKU Webzine"
+    icon: "press"
+    category: "미디어"
+  - label: "성대신문 커버스토리"
+    url: "https://webzine.skku.edu/skkuzine/section/coverStory.do?mode=list&&pagerLimit=10&articleNo=133909&pager.offset=110"
+    description: "SKKU Webzine"
+    icon: "press"
+    category: "미디어"
+  - label: "YouTube"
+    url: "https://www.youtube.com/watch?v=rameVU9T7dE"
+    description: "발표 영상"
+    icon: "youtube"
+    category: "미디어"
+  - label: "Disquiet 메이커로그"
+    url: "https://disquiet.io/@zoyoong124/makerlog/%EC%84%B1%EA%B7%A0%EA%B4%80%EB%8C%80%ED%95%99%EA%B5%90-%EC%9D%B8%EC%82%AC%EC%BA%A0-30-%EA%B0%80-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B2%84%EC%8A%A4-%EC%95%B1-%EC%A0%9C%EC%9E%91%EA%B8%B0"
+    description: "인사캠 30%가 사용하는 버스 앱 제작기"
+    icon: "article"
+    category: "아티클"
+  - label: "Velog 기술 블로그"
+    url: "https://velog.io/@spencer0124/%EC%8A%A4%ED%86%A0%EC%96%B4-%EC%97%86%EC%9D%B4-10%EB%B6%84%EB%A7%8C%EC%97%90-%EC%95%B1-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%ED%95%98%EA%B8%B0"
+    description: "스토어 없이 10분만에 앱 업데이트하기"
+    icon: "article"
+    category: "아티클"
 ---
-
-성균관대학교 인사캠 셔틀버스와 인자셔틀(캠퍼스 간 왕복 셔틀) 등의 정보를 한 곳에서 제공하는 **버스** 앱이다.
-인사캠 셔틀 실시간 위치, 번호표, 시간표를 확인하고, 텍스트로 현재 버스 상황을 공유할 수 있다.
-
----
-
-## 주요 기능
-
-- **실시간 버스 위치 조회**: 인사캠 셔틀버스가 현재 어디에 있는지 지도로 실시간 확인 가능.
-- **실시간 버스 번호표 및 출발 시각 확인**: 다음에 올 버스의 번호, 출발 예정 시각 등을 함께 제공.
-- **운행 정보 모음**: 학교·총학생회·행정부 등 여기저기 흩어진 셔틀 운행 정보를 한 화면에서 확인할 수 있도록 정리.
-- **공유 기능**: 현재 셔틀 위치·혼잡도 등을 텍스트로 친구에게 간단히 공유.
-- **문의 연동**: 운행정보에 연결된 연락처를 눌러 바로 전화 문의 가능.
-
----
-
-## 지원 노선 / 대상
-
-- **인사캠 셔틀버스**: 혜화역–인사캠 구간 등 학교 공식 셔틀
-- **인자셔틀**: 인사캠–자과캠 캠퍼스 간 왕복 셔틀
-- **기타**: 종로07 등 성균관대 인근 시내버스 일부 노선 정보 제공
-
----
-
-## 플랫폼 및 기술 스택
-
-- **플랫폼**
-  - Android: Google Play에서 설치 가능.
-  - iOS / iPadOS: App Store에서 설치 가능.
-- **기술 스택**
-  - **Flutter** 기반 단일 코드베이스로 Android와 iOS 동시 지원.
-  - 상태 관리 및 구조에 GetX 등 사용 (오픈소스 리포지토리 기준).
-
----
-
-## 개발 및 배포 정보
-
-- **개발자**: 조승용 외 기여자 (성균관대학교 재학생, Flutter 기반 개발).
-- **배포 채널**
-  - Google Play: “스꾸버스 - 성균관대학교 버스”.
-  - Apple App Store: “스꾸버스 - 성균관대학교 버스 앱”.
-- **사용자층**: 성균관대학교 인사캠 재학생·구성원 중심으로, 인사캠 학생 약 30% 이상이 사용하는 것으로 소개됨.

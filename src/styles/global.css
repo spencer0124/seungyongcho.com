@@ -55,6 +55,14 @@ article {
   }
 }
 
+.link-card {
+  @apply transition-all duration-300 ease-out;
+}
+
+.link-card:hover {
+  @apply -translate-y-0.5 shadow-sm;
+}
+
 .animate {
   @apply opacity-0 translate-y-3;
   @apply transition-all duration-700 ease-out;
